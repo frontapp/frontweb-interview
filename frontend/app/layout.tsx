@@ -85,7 +85,6 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           <SanityLive onError={handleError} />
           {/* <Header /> */}
           <main className="">{children}</main>
-          <Footer />
         </section>
         <SpeedInsights />
       </body>

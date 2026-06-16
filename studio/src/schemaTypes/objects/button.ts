@@ -10,16 +10,6 @@ export default defineType({
       title: 'Button Text',
       type: 'string',
     }),
-
-    defineField({
-      name: 'action',
-      title: 'Action',
-      type: 'string',
-      options: {
-        list: ['demo', 'trial', 'url'],
-        layout: 'radio',
-      },
-    }),
     defineField({
       name: 'link',
       title: 'Button Link',

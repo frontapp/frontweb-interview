@@ -19,7 +19,7 @@ type BlocksType = {
 const Blocks = {
   callToAction: Cta,
   infoSection: Info,
-} as BlocksType
+} as unknown as BlocksType
 
 /**
  * Used by the <PageBuilder>, this component renders a the component that matches the block type.

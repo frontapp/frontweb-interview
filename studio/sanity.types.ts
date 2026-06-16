@@ -26,7 +26,6 @@ export type ButtonPair = {
 export type Button = {
   _type: 'button'
   buttonText?: string
-  action?: 'demo' | 'trial' | 'url'
   link?: Link
 }
 

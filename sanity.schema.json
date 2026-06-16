@@ -75,27 +75,6 @@
           },
           "optional": true
         },
-        "action": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "demo"
-              },
-              {
-                "type": "string",
-                "value": "trial"
-              },
-              {
-                "type": "string",
-                "value": "url"
-              }
-            ]
-          },
-          "optional": true
-        },
         "link": {
           "type": "objectAttribute",
           "value": {

@@ -26,7 +26,6 @@ export type ButtonPair = {
 export type Button = {
   _type: 'button'
   buttonText?: string
-  action?: 'demo' | 'trial' | 'url'
   link?: Link
 }
 
@@ -619,7 +618,6 @@ export type GetPageQueryResult = {
         button: {
           _type: 'button'
           buttonText?: string
-          action?: 'demo' | 'trial' | 'url'
           link: {
             _type: 'link'
             linkType?: 'href' | 'page' | 'post'
