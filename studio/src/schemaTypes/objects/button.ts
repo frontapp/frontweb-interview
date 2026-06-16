@@ -1,0 +1,32 @@
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
+  name: 'button',
+  type: 'object',
+  description: 'The button of the call to action',
+  fields: [
+    defineField({
+      name: 'buttonText',
+      title: 'Button Text',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'action',
+      title: 'Action',
+      type: 'string',
+      options: {
+        list: ['demo', 'trial', 'url'],
+        layout: 'radio',
+      },
+    }),
+    defineField({
+      name: 'link',
+      title: 'Button Link',
+      type: 'link',
+      hidden: ({parent}) => parent?.action !== 'url',
+      options: {collapsible: true, collapsed: false},
+    }),
+  ],
+  options: {collapsible: true},
+})

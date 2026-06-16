@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        font-feature-settings: inherit;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
