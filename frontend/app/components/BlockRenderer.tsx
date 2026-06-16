@@ -2,8 +2,6 @@ import React from 'react'
 
 import Cta from '@/app/components/Cta'
 import Info from '@/app/components/InfoSection'
-import {ZigZag} from '@/app/components/ZigZag'
-import {Exploration} from '@/app/components/Exploration'
 import {dataAttr} from '@/sanity/lib/utils'
 import {PageBuilderSection} from '@/sanity/lib/types'
 
@@ -21,8 +19,6 @@ type BlocksType = {
 const Blocks = {
   callToAction: Cta,
   infoSection: Info,
-  zigZag: ZigZag,
-  exploration: Exploration,
 } as BlocksType
 
 /**

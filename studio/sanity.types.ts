@@ -12,698 +12,9 @@
  * ---------------------------------------------------------------------------------
  */
 
+export declare const internalGroqTypeReferenceTo: unique symbol
+
 // Source: ../sanity.schema.json
-export type FaqBlock = {
-  _type: 'faqBlock'
-  items: Array<
-    {
-      _key: string
-    } & FaqItem
-  >
-}
-
-export type MediaCarousel = {
-  _type: 'mediaCarousel'
-  title?: string
-  slides: Array<
-    {
-      _key: string
-    } & CarouselSlide
-  >
-}
-
-export type SanityImageAssetReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-}
-
-export type SanityFileAssetReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
-}
-
-export type Media = {
-  _type: 'media'
-  mediaType: MediaType
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  video?: {
-    asset?: SanityFileAssetReference
-    media?: unknown
-    _type: 'file'
-  }
-  caption?: string
-}
-
-export type Stats = {
-  _type: 'stats'
-  items: Array<
-    {
-      _key: string
-    } & StatsItem
-  >
-}
-
-export type PullQuote = {
-  _type: 'pullQuote'
-  quoteText: string
-  authorName?: string
-  authorTitle?: string
-  authorImage?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-}
-
-export type CalloutInline = {
-  _type: 'calloutInline'
-  theme?: BlogTheme
-  showLogo?: boolean
-  showCta?: boolean
-  title: string
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-  ctaText?: string
-  ctaLink?: CtaLink
-}
-
-export type CtaSmallBlock = {
-  _type: 'ctaSmallBlock'
-  theme?: BlogTheme
-  title: string
-  description?: string
-  ctaText?: string
-  link?: CtaLink
-}
-
-export type CtaDownloadBlock = {
-  _type: 'ctaDownloadBlock'
-  title: string
-  previewImage?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  ctaText?: string
-  downloadAsset: {
-    asset?: SanityFileAssetReference
-    media?: unknown
-    _type: 'file'
-  }
-}
-
-export type CtaCustomBlock = {
-  _type: 'ctaCustomBlock'
-  title: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  ctaText?: string
-  link?: CtaLink
-}
-
-export type CtaFullWidthBlock = {
-  _type: 'ctaFullWidthBlock'
-  title: string
-  backgroundImage?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  primaryButton?: CtaLink
-  secondaryButton?: CtaLink
-}
-
-export type CtaEvergreenBlock = {
-  _type: 'ctaEvergreenBlock'
-  theme?: BlogTheme
-  title: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  primaryButton?: CtaLink
-  secondaryButton?: CtaLink
-}
-
-export type HubspotFormModal = {
-  _type: 'hubspotFormModal'
-  ctaText: string
-  modalHeading: string
-  modalText?: string
-  hubspotFormId: string
-  hubspotCustomFields?: string
-  successCopy: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-}
-
-export type Embed = {
-  _type: 'embed'
-  provider: 'twitter' | 'linkedin' | 'slideshare'
-  embedCode: string
-}
-
-export type BlockquoteStandalone = {
-  _type: 'blockquoteStandalone'
-  quote: string
-  authorName?: string
-  authorTitle?: string
-}
-
-export type QuoteReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'quote'
-}
-
-export type BlockquoteLinked = {
-  _type: 'blockquoteLinked'
-  quote: QuoteReference
-}
-
-export type ResourceDownload = {
-  _type: 'resourceDownload'
-  title: string
-}
-
-export type Cta = {
-  _type: 'cta'
-  primary: CtaLink
-  secondary?: CtaLink
-  primaryCtaType: 'button' | 'text'
-  horizontalAlignment?: HorizontalAlignment
-}
-
-export type YoutubeVideo = {
-  _type: 'youtubeVideo'
-  url: string
-  label: string
-  coverImage: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-}
-
-export type VideoAsset = {
-  _type: 'videoAsset'
-  video: {
-    asset?: SanityFileAssetReference
-    media?: unknown
-    _type: 'file'
-  }
-  label: string
-  autoplay?: boolean
-  roundedCorners?: boolean
-}
-
-export type BlogPortableTextImage = {
-  _type: 'blogPortableTextImage'
-  image: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  caption?: string
-  roundedCorners?: boolean
-  horizontalAlignment?: HorizontalAlignment
-}
-
-export type CarouselSlide = {
-  _type: 'carouselSlide'
-  image: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  caption?: string
-}
-
-export type FaqItem = {
-  _type: 'faqItem'
-  question: string
-  answer: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-}
-
-export type StatsItem = {
-  _type: 'statsItem'
-  label: string
-  value: string
-  description?: string
-}
-
-export type MediaType = 'image' | 'video'
-
-export type BlogArticleReference = {
-  _ref: string
-  _type: 'reference'
-  _weak?: boolean
-  [internalGroqTypeReferenceTo]?: 'blogArticle'
-}
-
-export type CtaLink = {
-  _type: 'ctaLink'
-  label?: string
-  href?: string
-  internalRef?: BlogArticleReference
-  openInNewTab?: boolean
-}
-
-export type BlogTheme = 'default' | 'light' | 'dark' | 'brand' | 'accent'
-
-export type HorizontalAlignment = 'left' | 'center' | 'right'
-
-export type Icon = {
-  _type: 'icon'
-  name?:
-    | 'add-column-left'
-    | 'add-column-right'
-    | 'add-link'
-    | 'add-reaction'
-    | 'add-row-above'
-    | 'add-row-below'
-    | 'adjust-tone'
-    | 'ai'
-    | 'ai-agent'
-    | 'ai-compose'
-    | 'alarm-clock'
-    | 'alert-circle'
-    | 'alert-hexagon'
-    | 'alert-square'
-    | 'alert-triangle'
-    | 'align-left'
-    | 'align-vertical-center'
-    | 'archive'
-    | 'archive-off'
-    | 'arrow-block-left'
-    | 'arrow-block-right'
-    | 'arrow-circle-broken-right'
-    | 'arrow-narrow-down'
-    | 'arrow-narrow-down-right'
-    | 'arrow-narrow-left'
-    | 'arrow-narrow-right'
-    | 'arrow-narrow-up'
-    | 'arrow-narrow-up-right'
-    | 'at-sign'
-    | 'audit-log'
-    | 'autopilot'
-    | 'badge-counter'
-    | 'bar-chart-01'
-    | 'bar-chart-10'
-    | 'bell-01'
-    | 'bell-off-01'
-    | 'block-corner-up-left'
-    | 'block-corner-up-right'
-    | 'bold-01'
-    | 'book-closed'
-    | 'book-open-01'
-    | 'bookmark'
-    | 'brackets-ellipses'
-    | 'brain'
-    | 'branching-rule'
-    | 'briefcase-01'
-    | 'briefcase-01-plus'
-    | 'briefcase-02'
-    | 'building-05'
-    | 'business-hours'
-    | 'calendar'
-    | 'calendar-check-02'
-    | 'calendar-date'
-    | 'calendar-plus-02'
-    | 'caret-collapse'
-    | 'caret-expand'
-    | 'caret-up-down'
-    | 'chat'
-    | 'chat-deflected'
-    | 'check'
-    | 'check-circle'
-    | 'check-square'
-    | 'check-verified-02'
-    | 'chevron-down'
-    | 'chevron-left'
-    | 'chevron-right'
-    | 'chevron-up'
-    | 'circle'
-    | 'clock'
-    | 'clock-check'
-    | 'clock-recently-viewed'
-    | 'clock-rewind'
-    | 'clock-snooze'
-    | 'cloud-off'
-    | 'code-01'
-    | 'columns-03'
-    | 'compass'
-    | 'connectors'
-    | 'contact-auto'
-    | 'contrast-02'
-    | 'conversation'
-    | 'conversation-search'
-    | 'copilot'
-    | 'copy-01'
-    | 'copy-06'
-    | 'copy-file'
-    | 'corner-down-right'
-    | 'corner-up-left'
-    | 'corner-up-left-double'
-    | 'corner-up-right'
-    | 'cpu-chip-01'
-    | 'credit-card-02'
-    | 'crown'
-    | 'cube-01'
-    | 'cube-01-off'
-    | 'cube-outline'
-    | 'currency-dollar'
-    | 'cursor-click'
-    | 'customer-portal'
-    | 'dataflow-02'
-    | 'delete'
-    | 'deliverability'
-    | 'diamond-01'
-    | 'discussions'
-    | 'discussions-depreciated'
-    | 'distribute-spacing-vertical'
-    | 'divider'
-    | 'donut-chart'
-    | 'door-open'
-    | 'dot'
-    | 'dotpoints-01'
-    | 'dots-grid'
-    | 'dots-horizontal'
-    | 'dots-vertical'
-    | 'download-02'
-    | 'edit-01'
-    | 'edit-05'
-    | 'emoji'
-    | 'emoji-activity'
-    | 'emoji-food'
-    | 'emoji-nature'
-    | 'emoji-symbols'
-    | 'expand-01'
-    | 'export'
-    | 'eye'
-    | 'eye-off'
-    | 'face-happy'
-    | 'face-smile'
-    | 'feather'
-    | 'field-custom'
-    | 'file-02'
-    | 'file-05'
-    | 'file-check-01'
-    | 'file-check-02'
-    | 'file-download-02'
-    | 'file-download-03'
-    | 'file-search-01'
-    | 'filter-lines'
-    | 'first-page'
-    | 'fix-grammar'
-    | 'flag-01'
-    | 'flip-backward'
-    | 'flip-forward-plus'
-    | 'focus'
-    | 'folder'
-    | 'formatting'
-    | 'formatting-list'
-    | 'formatting-quote'
-    | 'forward-10s'
-    | 'front-logo'
-    | 'geometry'
-    | 'gif'
-    | 'gift-01'
-    | 'git-branch-01'
-    | 'git-pull-request'
-    | 'globe-01'
-    | 'globe-04'
-    | 'go-to-conversation'
-    | 'grab-handle'
-    | 'graduation-hat-01'
-    | 'grid-01'
-    | 'hash-02'
-    | 'heart'
-    | 'help-center'
-    | 'help-circle'
-    | 'home-05'
-    | 'hourglass-02'
-    | 'hourglass-check'
-    | 'image-03'
-    | 'inbox-01'
-    | 'inbox-list'
-    | 'info-circle'
-    | 'info-history'
-    | 'italic-01'
-    | 'keyboard-02'
-    | 'laptop'
-    | 'last-page'
-    | 'layers-three-01'
-    | 'layout-alt-01'
-    | 'layout-alt-02'
-    | 'layout-grid-02'
-    | 'layout-left'
-    | 'layout-right'
-    | 'lightbulb-04'
-    | 'lightning-01'
-    | 'line-chart-up-01'
-    | 'linear-rule'
-    | 'link-03'
-    | 'link-broken-03'
-    | 'link-external-02'
-    | 'link-to'
-    | 'lock-01'
-    | 'log-in-02'
-    | 'log-out-02'
-    | 'log-out-04'
-    | 'longer'
-    | 'mail-01'
-    | 'mail-04'
-    | 'mail-notification'
-    | 'marker-pin-01'
-    | 'menu-01'
-    | 'menu-04'
-    | 'merge'
-    | 'message-plus-circle'
-    | 'message-square-01'
-    | 'message-template'
-    | 'message-text-circle-02'
-    | 'microphone-01'
-    | 'minimize-01'
-    | 'minus'
-    | 'minus-circle'
-    | 'moon-02'
-    | 'numbers'
-    | 'open'
-    | 'outbox'
-    | 'package'
-    | 'paperclip'
-    | 'paragraph-spacing'
-    | 'pause'
-    | 'pause-circle'
-    | 'pencil-01'
-    | 'phone'
-    | 'phone-call-01'
-    | 'phone-call-03'
-    | 'phone-call-answered'
-    | 'phone-call-ended'
-    | 'phone-hang-up'
-    | 'phone-incoming-01'
-    | 'phone-outgoing-01'
-    | 'phone-outgoing-02'
-    | 'phone-pause'
-    | 'phone-x'
-    | 'pie-chart-01'
-    | 'pin-02'
-    | 'plane'
-    | 'play'
-    | 'play-circle'
-    | 'playbook-temporary'
-    | 'plus'
-    | 'plus-circle'
-    | 'printer'
-    | 'puzzle-piece'
-    | 'q-a-smart'
-    | 'refresh-cw-01'
-    | 'refresh-cw-02'
-    | 'reopen'
-    | 'repeat-01'
-    | 'repeat-02'
-    | 'replace-all'
-    | 'rewind-10s'
-    | 'rocket-02'
-    | 'rule-tester'
-    | 'save'
-    | 'schedule'
-    | 'search-sm'
-    | 'send'
-    | 'send-04'
-    | 'send-options'
-    | 'settings-02'
-    | 'settings-03'
-    | 'shift'
-    | 'shorter'
-    | 'shuffle'
-    | 'sidebar'
-    | 'slash-circle-01'
-    | 'sliders-04'
-    | 'sms'
-    | 'split'
-    | 'square'
-    | 'star-04'
-    | 'stars-01'
-    | 'status-change'
-    | 'sticker-square'
-    | 'strikethrough-01'
-    | 'sun'
-    | 'switch-horizontal-01'
-    | 'switch-vertical-01'
-    | 'table'
-    | 'tag-03'
-    | 'tag-04'
-    | 'target-03'
-    | 'target-off'
-    | 'task'
-    | 'task-template'
-    | 'template'
-    | 'thumbs-down'
-    | 'thumbs-up'
-    | 'ticket-01'
-    | 'tool'
-    | 'translate-01'
-    | 'trash-03'
-    | 'truck-01'
-    | 'twitter-x'
-    | 'type-strikethrough-01'
-    | 'umbrella-03'
-    | 'unassigned'
-    | 'underline-01'
-    | 'unpin'
-    | 'user-01'
-    | 'user-check-01'
-    | 'user-circle'
-    | 'user-edit'
-    | 'user-left-01'
-    | 'user-plus-01'
-    | 'user-right-01'
-    | 'user-right-off'
-    | 'user-x-01'
-    | 'users'
-    | 'users-01'
-    | 'users-left'
-    | 'users-plus'
-    | 'variable'
-    | 'video-recorder'
-    | 'views'
-    | 'visitor-source'
-    | 'voicemail'
-    | 'volume-max'
-    | 'whatsapp'
-    | 'workspace'
-    | 'workspace-stroke'
-    | 'x-circle'
-    | 'x-close'
-}
-
-export type Exploration = {
-  _type: 'exploration'
-  theme?: Theme
-  title?: string
-  items?: Array<
-    {
-      _key: string
-    } & FeatureItem
-  >
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-}
-
-export type FeatureItem = {
-  _type: 'featureItem'
-  icon?: Icon
-  title?: string
-  link?: Link
-}
-
 export type ButtonPair = {
   _type: 'buttonPair'
   variant?: 'filledOutline' | 'filledTertiary'
@@ -712,30 +23,11 @@ export type ButtonPair = {
   secondButton?: Button
 }
 
-export type ZigZagItem = {
-  _type: 'zigZagItem'
-  textCombination?: TextCombination
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  hasButtonPair?: boolean
-  buttonPair?: ButtonPair
-  checkListItems?: Array<string>
-}
-
-export type ZigZag = {
-  _type: 'zigZag'
-  theme?: Theme
-  textCombination?: TextCombination
-  zigZagItems?: Array<
-    {
-      _key: string
-    } & ZigZagItem
-  >
+export type Button = {
+  _type: 'button'
+  buttonText?: string
+  action?: 'demo' | 'trial' | 'url'
+  link?: Link
 }
 
 export type TextCombination = {
@@ -744,6 +36,25 @@ export type TextCombination = {
   title: string
   description?: BlockContentTextOnly
 }
+
+export type BlockContentTextOnly = Array<{
+  children?: Array<{
+    marks?: Array<string>
+    text?: string
+    _type: 'span'
+    _key: string
+  }>
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+  listItem?: 'bullet' | 'number'
+  markDefs?: Array<{
+    href?: string
+    _type: 'link'
+    _key: string
+  }>
+  level?: number
+  _type: 'block'
+  _key: string
+}>
 
 export type Theme = {
   _type: 'theme'
@@ -773,6 +84,13 @@ export type Link = {
   openInNewTab?: boolean
 }
 
+export type SanityImageAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
 export type CallToAction = {
   _type: 'callToAction'
   eyebrow?: string
@@ -797,7 +115,7 @@ export type InfoSection = {
   content?: BlockContent
 }
 
-export type BlockContentTextOnly = Array<{
+export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>
     text?: string
@@ -807,7 +125,11 @@ export type BlockContentTextOnly = Array<{
   style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
   listItem?: 'bullet' | 'number'
   markDefs?: Array<{
+    linkType?: 'href' | 'page' | 'post'
     href?: string
+    page?: PageReference
+    post?: PostReference
+    openInNewTab?: boolean
     _type: 'link'
     _key: string
   }>
@@ -815,41 +137,6 @@ export type BlockContentTextOnly = Array<{
   _type: 'block'
   _key: string
 }>
-
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>
-        text?: string
-        _type: 'span'
-        _key: string
-      }>
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
-      listItem?: 'bullet' | 'number'
-      markDefs?: Array<{
-        linkType?: 'href' | 'page' | 'post'
-        href?: string
-        page?: PageReference
-        post?: PostReference
-        openInNewTab?: boolean
-        _type: 'link'
-        _key: string
-      }>
-      level?: number
-      _type: 'block'
-      _key: string
-    }
-  | ({
-      _key: string
-    } & BlogPortableTextImage)
->
-
-export type Button = {
-  _type: 'button'
-  buttonText?: string
-  action?: 'demo' | 'trial' | 'url'
-  link?: Link
-}
 
 export type Quote = {
   _id: string
@@ -860,119 +147,6 @@ export type Quote = {
   quote: string
   authorName?: string
   authorTitle?: string
-}
-
-export type BlogArticle = {
-  _id: string
-  _type: 'blogArticle'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title: string
-  slug: Slug
-  blogArticleContent?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'normal' | 'h2' | 'h3' | 'h4' | 'blockquote'
-        listItem?: 'bullet' | 'number'
-        markDefs?: Array<{
-          href: string
-          openInNewTab?: boolean
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | ({
-        _key: string
-      } & BlogPortableTextImage)
-    | ({
-        _key: string
-      } & VideoAsset)
-    | ({
-        _key: string
-      } & YoutubeVideo)
-    | ({
-        _key: string
-      } & Cta)
-    | ({
-        _key: string
-      } & ResourceDownload)
-    | ({
-        _key: string
-      } & BlockquoteLinked)
-    | ({
-        _key: string
-      } & BlockquoteStandalone)
-    | ({
-        _key: string
-      } & Embed)
-    | ({
-        _key: string
-      } & HubspotFormModal)
-    | ({
-        _key: string
-      } & CtaEvergreenBlock)
-    | ({
-        _key: string
-      } & CtaFullWidthBlock)
-    | ({
-        _key: string
-      } & CtaCustomBlock)
-    | ({
-        _key: string
-      } & CtaDownloadBlock)
-    | ({
-        _key: string
-      } & CtaSmallBlock)
-    | ({
-        _key: string
-      } & CalloutInline)
-    | ({
-        _key: string
-      } & PullQuote)
-    | ({
-        _key: string
-      } & Stats)
-    | ({
-        _key: string
-      } & Media)
-    | ({
-        _key: string
-      } & MediaCarousel)
-    | ({
-        _key: string
-      } & FaqBlock)
-  >
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
-}
-
-export type Slug = {
-  _type: 'slug'
-  current: string
-  source?: string
 }
 
 export type Settings = {
@@ -1015,6 +189,22 @@ export type Settings = {
   }
 }
 
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
 export type Page = {
   _id: string
   _type: 'page'
@@ -1032,12 +222,6 @@ export type Page = {
     | ({
         _key: string
       } & InfoSection)
-    | ({
-        _key: string
-      } & ZigZag)
-    | ({
-        _key: string
-      } & Exploration)
   >
 }
 
@@ -1086,6 +270,12 @@ export type Person = {
     alt?: string
     _type: 'image'
   }
+}
+
+export type Slug = {
+  _type: 'slug'
+  current: string
+  source?: string
 }
 
 export type SanityAssistInstructionTask = {
@@ -1258,6 +448,7 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette
   lqip?: string
   blurHash?: string
+  thumbHash?: string
   hasAlpha?: boolean
   isOpaque?: boolean
 }
@@ -1273,14 +464,14 @@ export type SanityFileAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
   uploadId?: string
-  path?: string
-  url?: string
+  path: string
+  url: string
   source?: SanityAssetSourceData
 }
 
@@ -1302,14 +493,14 @@ export type SanityImageAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
   uploadId?: string
-  path?: string
-  url?: string
+  path: string
+  url: string
   metadata?: SanityImageMetadata
   source?: SanityAssetSourceData
 }
@@ -1322,63 +513,27 @@ export type Geopoint = {
 }
 
 export type AllSanitySchemaTypes =
-  | FaqBlock
-  | MediaCarousel
-  | SanityImageAssetReference
-  | SanityFileAssetReference
-  | Media
-  | Stats
-  | PullQuote
-  | CalloutInline
-  | CtaSmallBlock
-  | CtaDownloadBlock
-  | CtaCustomBlock
-  | CtaFullWidthBlock
-  | CtaEvergreenBlock
-  | HubspotFormModal
-  | Embed
-  | BlockquoteStandalone
-  | QuoteReference
-  | BlockquoteLinked
-  | ResourceDownload
-  | Cta
-  | YoutubeVideo
-  | VideoAsset
-  | BlogPortableTextImage
-  | CarouselSlide
-  | FaqItem
-  | StatsItem
-  | MediaType
-  | BlogArticleReference
-  | CtaLink
-  | BlogTheme
-  | HorizontalAlignment
-  | Icon
-  | Exploration
-  | FeatureItem
   | ButtonPair
-  | ZigZagItem
-  | ZigZag
+  | Button
   | TextCombination
+  | BlockContentTextOnly
   | Theme
   | PageReference
   | PostReference
   | Link
+  | SanityImageAssetReference
   | CallToAction
   | InfoSection
-  | BlockContentTextOnly
   | BlockContent
-  | Button
   | Quote
-  | BlogArticle
+  | Settings
   | SanityImageCrop
   | SanityImageHotspot
-  | Slug
-  | Settings
   | Page
   | PersonReference
   | Post
   | Person
+  | Slug
   | SanityAssistInstructionTask
   | SanityAssistTaskStatus
   | SanityAssistSchemaTypeAnnotations
@@ -1400,5 +555,3 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint
-
-export declare const internalGroqTypeReferenceTo: unique symbol

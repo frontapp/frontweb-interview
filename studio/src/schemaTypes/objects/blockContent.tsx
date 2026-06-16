@@ -96,11 +96,5 @@ export const blockContent = defineType({
         ],
       },
     }),
-    defineArrayMember({
-      type: 'blogPortableTextImage',
-      options: {
-        hotspot: true,
-      },
-    }),
   ],
 })
